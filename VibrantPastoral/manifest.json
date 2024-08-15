@@ -1,0 +1,15 @@
+{
+  "Name": "Vibrant Pastoral C#",
+  "Author": "JefGrizli",
+  "Version": "1.0.0-c",
+  "Description": "Registered Tokens for Vibrant Pastoral Redrawn and dependant mods.",
+  "UniqueID": "VibrantPastoral.C",
+  "EntryDll": "VibrantPastoral.dll",
+  "MinimumApiVersion": "4.0.7",
+  "UpdateKeys": [ "Nexus:???" ],
+  "Dependencies": [
+    {
+      "UniqueID": "Pathoschild.ContentPatcher"
+    }
+  ]
+}
