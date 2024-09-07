@@ -6,7 +6,7 @@
     public bool Interiors { get; set; } = true;
     public bool Vegetation { get; set; } = true;
     public bool SnOverlay { get; set; } = true;
-    public bool Extras { get; set; } = true;
+    public string Water { get; set; } = "Transparent";
     public bool IridiumOasis { get; set; } = false;
     public bool EdNygma { get; set; } = false;
 

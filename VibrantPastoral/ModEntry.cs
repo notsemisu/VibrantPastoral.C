@@ -73,12 +73,11 @@ namespace VibrantPastoral
                 }
                 return null;
             });
-            //Expanded Config
-            api.RegisterToken(this.ModManifest, "Extras", () =>
+            api.RegisterToken(this.ModManifest, "Water", () =>
             {
                 if (Context.IsWorldReady || SaveGame.loaded is not null)
                 {
-                    return new[] { this.Config.Extras.ToString() };
+                    return new[] { this.Config.Water };
                 }
                 return null;
             });
@@ -90,6 +89,7 @@ namespace VibrantPastoral
                 }
                 return null;
             });
+            //Expanded Config
             //??? Config
             api.RegisterToken(this.ModManifest, "EdNygma", () =>
             {
@@ -172,29 +172,25 @@ namespace VibrantPastoral
                 getValue: () => this.Config.SnOverlay,
                 setValue: value => this.Config.SnOverlay = value
                 );
+            configMenu.AddTextOption(
+                mod: this.ModManifest,
+                name: () => "Water",
+                tooltip: () => "Change the Transparency of water. 'Transparent' is the Vanilla default",
+                getValue: () => this.Config.Water,
+                setValue: value => this.Config.Water = value,
+                allowedValues: new string[] { "Transparent", "Semi", "Opaque" }
+                );
+            configMenu.AddBoolOption(
+                mod: this.ModManifest,
+                name: () => "Iridium Oasis",
+                tooltip: () => "Toggle Desert Oasis to be made of iridium.",
+                getValue: () => this.Config.IridiumOasis,
+                setValue: value => this.Config.IridiumOasis = value
+                );
 
             //Expanded Config
             if (Helper.ModRegistry.IsLoaded("VibrantPastoral.Expanded"))
             {
-                configMenu.AddSectionTitle(
-                    mod: this.ModManifest,
-                    text: () => "Extras"
-                    );
-
-                configMenu.AddBoolOption(
-                    mod: this.ModManifest,
-                    name: () => "Extras",
-                    tooltip: () => "Toggle changes to z_extras.",
-                    getValue: () => this.Config.Extras,
-                    setValue: value => this.Config.Extras = value
-                    );
-                configMenu.AddBoolOption(
-                     mod: this.ModManifest,
-                     name: () => "Iridium Oasis",
-                     tooltip: () => "Enable if Oasis chosen to be made of iridium in VPR.",
-                     getValue: () => this.Config.IridiumOasis,
-                     setValue: value => this.Config.IridiumOasis = value
-                     );
             }
 
             //??? Config
