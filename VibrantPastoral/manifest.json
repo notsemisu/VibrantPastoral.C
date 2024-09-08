@@ -5,7 +5,7 @@
   "Description": "Registered Tokens for Vibrant Pastoral Redrawn and dependant mods.",
   "UniqueID": "VibrantPastoral.C",
   "EntryDll": "VibrantPastoral.dll",
-  "MinimumApiVersion": "4.0.7",
+  "MinimumApiVersion": "4.0.8",
   "UpdateKeys": [ "Nexus:???" ],
   "Dependencies": [
     {
