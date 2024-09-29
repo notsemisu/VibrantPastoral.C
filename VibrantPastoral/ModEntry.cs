@@ -26,13 +26,13 @@ namespace VibrantPastoral
             }
 
             api.RegisterToken(this.ModManifest, "GreenFall", () =>
+            {
+                if (Context.IsWorldReady || SaveGame.loaded is not null)
                 {
-                    if (Context.IsWorldReady || SaveGame.loaded is not null)
-                    {
-                        return new[] { this.Config.GreenFall.ToString() };
-                    }
-                    return null;
-                });
+                    return new[] { this.Config.GreenFall.ToString() };
+                }
+                return null;
+            });
             api.RegisterToken(this.ModManifest, "PetBowlShadow", () =>
             {
                 if (Context.IsWorldReady || SaveGame.loaded is not null)
@@ -101,6 +101,8 @@ namespace VibrantPastoral
             });
 
             //GMCM
+            var i18n = Helper.Translation;
+
             if (this.Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu") is not IGenericModConfigMenuApi configMenu)
             {
                 return;
@@ -114,76 +116,76 @@ namespace VibrantPastoral
 
             configMenu.AddSectionTitle(
                 mod: this.ModManifest,
-                text: () => "World Map"
+                text: () => i18n.Get("config.section.WorldMap.name")
                 );
 
             configMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Green Fall",
-                tooltip: () => "Change terrain colour from orange to green during fall.",
+                name: () => i18n.Get("config.GreenFall.name"),
+                tooltip: () => i18n.Get("config.GreenFall.description"),
                 getValue: () => this.Config.GreenFall,
                 setValue: value => this.Config.GreenFall = value
                 );
 
             configMenu.AddSectionTitle(
                 mod: this.ModManifest,
-                text: () => "Custom Farm"
+                text: () => i18n.Get("config.section.CustomFarm.name")
                 );
 
             configMenu.AddTextOption(
                  mod: this.ModManifest,
-                 name: () => "Pet Bowl Shadow",
-                 tooltip: () => "Manually set the pet bowl shadow for custom farms.",
+                name: () => i18n.Get("config.PetBowlShadow.name"),
+                tooltip: () => i18n.Get("config.PetBowlShadow.description"),
                  getValue: () => this.Config.PetBowlShadow,
                  setValue: value => this.Config.PetBowlShadow = value,
-                 allowedValues: new string[] { "", "Beach", "Standard" }
+                 allowedValues: new string[] { "", i18n.Get("config.PetBowlShadow.values.beach"), i18n.Get("config.PetBowlShadow.values.standard") }
                  );
 
             configMenu.AddSectionTitle(
                 mod: this.ModManifest,
-                text: () => "Misc"
+                text: () => i18n.Get("config.section.misc.name")
                 );
 
             configMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Furniture",
-                tooltip: () => "Toggle changes to furniture.",
+                name: () => i18n.Get("config.Furniture.name"),
+                tooltip: () => i18n.Get("config.Furniture.description"),
                 getValue: () => this.Config.Furniture,
                 setValue: value => this.Config.Furniture = value
                 );
             configMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Interiors",
-                tooltip: () => "Toggle changes to interiors.",
+                name: () => i18n.Get("config.Interiors.name"),
+                tooltip: () => i18n.Get("config.Interiors.description"),
                 getValue: () => this.Config.Interiors,
                 setValue: value => this.Config.Interiors = value
                 );
             configMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Vegetation",
-                tooltip: () => "Toggle changes to outdoors vegetation. No effect if Simple Foliage loaded.",
+                name: () => i18n.Get("config.Vegetation.name"),
+                tooltip: () => i18n.Get("config.Vegetation.description"),
                 getValue: () => this.Config.Vegetation,
                 setValue: value => this.Config.Vegetation = value
                 );
             configMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "SnOverlay",
-                tooltip: () => "Toggle snow covered rooves and other exposed surfaces during winter; no effect on disabled buildings.",
+                name: () => i18n.Get("config.SnOverlay.name"),
+                tooltip: () => i18n.Get("config.SnOverlay.description"),
                 getValue: () => this.Config.SnOverlay,
                 setValue: value => this.Config.SnOverlay = value
                 );
             configMenu.AddTextOption(
                 mod: this.ModManifest,
-                name: () => "Water",
-                tooltip: () => "Change the Transparency of water. 'Transparent' is the Vanilla default",
+                name: () => i18n.Get("config.Water.name"),
+                tooltip: () => i18n.Get("config.Water.description"),
                 getValue: () => this.Config.Water,
                 setValue: value => this.Config.Water = value,
-                allowedValues: new string[] { "Transparent", "Semi", "Opaque" }
+                allowedValues: new string[] { i18n.Get("config.Water.values.transparent"), i18n.Get("config.Water.values.semi"), i18n.Get("config.Water.values.opaque") }
                 );
             configMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Iridium Oasis",
-                tooltip: () => "Toggle Desert Oasis to be made of iridium.",
+                name: () => i18n.Get("config.IridiumOasis.name"),
+                tooltip: () => i18n.Get("config.IridiumOasis.description"),
                 getValue: () => this.Config.IridiumOasis,
                 setValue: value => this.Config.IridiumOasis = value
                 );
@@ -196,13 +198,13 @@ namespace VibrantPastoral
             //??? Config
             configMenu.AddSectionTitle(
                 mod: this.ModManifest,
-                text: () => "???"
+                text: () => i18n.Get("config.section.???.name")
                 );
 
             configMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Ed Nygma",
-                tooltip: () => "???",
+                name: () => i18n.Get("config.EdNygma.name"),
+                tooltip: () => i18n.Get("config.EdNygma.description"),
                 getValue: () => this.Config.EdNygma,
                 setValue: value => this.Config.EdNygma = value
                 );
