@@ -9,6 +9,7 @@ namespace VibrantPastoral
 {
     internal class ModEntry : Mod
     {
+
         private ModConfig Config;
 
         public override void Entry(IModHelper helper)
@@ -27,7 +28,7 @@ namespace VibrantPastoral
 
             api.RegisterToken(this.ModManifest, "GreenFall", () =>
             {
-                if (Context.IsWorldReady || SaveGame.loaded is not null)
+                if (Context.IsGameLaunched || Context.IsWorldReady || SaveGame.loaded is not null)
                 {
                     return new[] { this.Config.GreenFall.ToString() };
                 }
@@ -35,7 +36,7 @@ namespace VibrantPastoral
             });
             api.RegisterToken(this.ModManifest, "PetBowlShadow", () =>
             {
-                if (Context.IsWorldReady || SaveGame.loaded is not null)
+                if (Context.IsGameLaunched || Context.IsWorldReady || SaveGame.loaded is not null)
                 {
                     return new[] { this.Config.PetBowlShadow };
                 }
@@ -43,7 +44,7 @@ namespace VibrantPastoral
             });
             api.RegisterToken(this.ModManifest, "Furniture", () =>
             {
-                if (Context.IsWorldReady || SaveGame.loaded is not null)
+                if (Context.IsGameLaunched || Context.IsWorldReady || SaveGame.loaded is not null)
                 {
                     return new[] { this.Config.Furniture.ToString() };
                 }
@@ -51,7 +52,7 @@ namespace VibrantPastoral
             });
             api.RegisterToken(this.ModManifest, "Interiors", () =>
             {
-                if (Context.IsWorldReady || SaveGame.loaded is not null)
+                if (Context.IsGameLaunched || Context.IsWorldReady || SaveGame.loaded is not null)
                 {
                     return new[] { this.Config.Interiors.ToString() };
                 }
@@ -59,7 +60,7 @@ namespace VibrantPastoral
             });
             api.RegisterToken(this.ModManifest, "Vegetation", () =>
             {
-                if (Context.IsWorldReady || SaveGame.loaded is not null)
+                if (Context.IsGameLaunched || Context.IsWorldReady || SaveGame.loaded is not null)
                 {
                     return new[] { this.Config.Vegetation.ToString() };
                 }
@@ -67,7 +68,7 @@ namespace VibrantPastoral
             });
             api.RegisterToken(this.ModManifest, "SnOverlay", () =>
             {
-                if (Context.IsWorldReady || SaveGame.loaded is not null)
+                if (Context.IsGameLaunched || Context.IsWorldReady || SaveGame.loaded is not null)
                 {
                     return new[] { this.Config.SnOverlay.ToString() };
                 }
@@ -75,7 +76,7 @@ namespace VibrantPastoral
             });
             api.RegisterToken(this.ModManifest, "Water", () =>
             {
-                if (Context.IsWorldReady || SaveGame.loaded is not null)
+                if (Context.IsGameLaunched || Context.IsWorldReady || SaveGame.loaded is not null)
                 {
                     return new[] { this.Config.Water };
                 }
@@ -83,17 +84,16 @@ namespace VibrantPastoral
             });
             api.RegisterToken(this.ModManifest, "IridiumOasis", () =>
             {
-                if (Context.IsWorldReady || SaveGame.loaded is not null)
+                if (Context.IsGameLaunched || Context.IsWorldReady || SaveGame.loaded is not null)
                 {
                     return new[] { this.Config.IridiumOasis.ToString() };
                 }
                 return null;
             });
-            //Expanded Config
             //??? Config
             api.RegisterToken(this.ModManifest, "EdNygma", () =>
             {
-                if (Context.IsWorldReady || SaveGame.loaded is not null)
+                if (Context.IsGameLaunched || Context.IsWorldReady || SaveGame.loaded is not null)
                 {
                     return new[] { this.Config.EdNygma.ToString() };
                 }
