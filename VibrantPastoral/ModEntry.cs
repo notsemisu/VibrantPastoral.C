@@ -133,13 +133,14 @@ namespace VibrantPastoral
                 );
 
             configMenu.AddTextOption(
-                 mod: this.ModManifest,
+                mod: this.ModManifest,
                 name: () => i18n.Get("config.PetBowlShadow.name"),
                 tooltip: () => i18n.Get("config.PetBowlShadow.description"),
-                 getValue: () => this.Config.PetBowlShadow,
-                 setValue: value => this.Config.PetBowlShadow = value,
-                 allowedValues: new string[] { "", i18n.Get("config.PetBowlShadow.values.beach"), i18n.Get("config.PetBowlShadow.values.standard") }
-                 );
+                getValue: () => this.Config.PetBowlShadow,
+                setValue: value => this.Config.PetBowlShadow = value,
+                allowedValues: new string[] { "", "beach", "standard" },
+                formatAllowedValue: value => i18n.Get($"config.PetBowlShadow.values.{value}").UsePlaceholder(false) ?? ""
+                );
 
             configMenu.AddSectionTitle(
                 mod: this.ModManifest,
@@ -180,7 +181,8 @@ namespace VibrantPastoral
                 tooltip: () => i18n.Get("config.Water.description"),
                 getValue: () => this.Config.Water,
                 setValue: value => this.Config.Water = value,
-                allowedValues: new string[] { i18n.Get("config.Water.values.transparent"), i18n.Get("config.Water.values.semi"), i18n.Get("config.Water.values.opaque") }
+                allowedValues: new string[] { "transparent", "semi", "opaque" },
+                formatAllowedValue: value => i18n.Get($"config.Water.values.{value}").UsePlaceholder(false) ?? ""
                 );
             configMenu.AddBoolOption(
                 mod: this.ModManifest,
